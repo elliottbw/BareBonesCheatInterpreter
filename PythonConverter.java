@@ -58,7 +58,6 @@ public class PythonConverter {
         System.out.print(message);
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         String output = input.readLine();
-        input.close();
 
         return output;
     }
@@ -289,16 +288,20 @@ public class PythonConverter {
     }
     
     public static void main(String[] args) throws IOException, Exception {
-        final String TEST_INPUT = "C:\\Users\\Elliott\\IdeaProjects\\Space Cadets\\SpaceCadets2\\test_file.txt";
+        final String TEST_INPUT = "C:\\Users\\Elliott\\IdeaProjects\\Space Cadets\\SpaceCadets2\\multiply.bb";
         final String TEST_OUTPUT = "C:\\Users\\Elliott\\IdeaProjects\\Space Cadets\\SpaceCadets2\\test_output_file.py";
         
-        PythonConverter fuck = new PythonConverter(TEST_INPUT, TEST_OUTPUT);
-        List<String> lines = fuck.readFileLines();
+        PythonConverter converter = new PythonConverter(TEST_INPUT, TEST_OUTPUT);
+        PythonInterpreter interpreter = new PythonInterpreter(TEST_OUTPUT);
+
+        List<String> lines = converter.readFileLines();
 
         for (String line: lines) {
-            fuck.parseLine(line);
+            converter.parseLine(line);
         }
 
-        fuck.finishParsing();
+        converter.finishParsing();
+        System.out.println(interpreter.runPythonCode());
+
     }
 }
