@@ -18,13 +18,13 @@ public class PythonConverter {
     public String[] reserved = {"clear", // done
                                 "copy", // done
                                 "decr", // done
-                                "do",
-                                "end",
+                                "do", // done
+                                "end", // done
                                 "incr", // done
                                 "init", // done
                                 "not", // done
                                 "to", // done
-                                "while"};
+                                "while"}; // done
 
     public List<String> declaredVariables = new ArrayList<String>();
     public String inputFile;
